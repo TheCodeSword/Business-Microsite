@@ -1,0 +1,920 @@
+
+/* Resets ============= */
+
+:root {
+    --standard-margin: 10%;
+    --responsive-margin: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+
+/* Header styles ============== */
+
+header {
+    position: relative;
+    margin: 60px var(--standard-margin, 10%);
+
+    animation-name: rise;                    /* Animation For header ============================== */
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+header h1 {
+    font-weight: bold;
+    font-size: 3em;
+}
+
+header span {
+    color: grey;
+    font-size: 20px;
+}
+
+
+
+
+/* content styles ============== */
+
+.content {
+    margin: 20px var(--standard-margin, 5%);
+    margin-bottom: 30px;
+}
+
+
+/* Nav styles ============= */
+nav {
+    padding-bottom: 40px;
+}
+
+nav a {
+    position: relative;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 25px;
+
+    animation: rise 3s ease-in-out forwards;                    /* Animation For the nav ============================== */
+}
+
+nav a span {
+    position: relative;
+    opacity: 0;
+    animation: tab 0.5s 1s ease-in-out forwards;       /* tab sliding animation =========================== */
+}
+
+nav a:first-of-type{
+    z-index: 2;
+}
+
+nav a::before {
+    position: absolute;
+    display: inline-block;
+    z-index: 1;
+    content: '';
+    background-color: black;
+    width: 100%;
+    height: 200%;
+    top: 0px;
+    right: 100%;
+}
+
+nav a::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    background-color: white;
+    width: 100%;
+    height: 4px;
+    top: 25px;
+    right: 100%;
+}
+
+nav a:first-of-type::after {
+    animation: tab 0.5s 1.5s ease-in-out forwards;       /* tab sliding animation =========================== */
+}
+
+
+
+
+/* Video Box styles ================ */
+
+.videoBox {
+    position: relative;
+    background-color: black;
+    width: 80%;
+    height: 0px;
+    transform: rotateX(90deg);
+    transform-origin: 50% 150%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.videoBox video {
+    pointer-events: none;
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.videoBox .playerInfo {
+    background-color: white;
+    height: max-content;
+    width: 80%;
+    height: 120px;
+    color: black;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.close {
+    background-color: white;
+    height: 120px;
+    width: 20%;
+    color: red;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close span {
+    cursor: pointer;
+}
+
+.close span:hover {
+    color: darkred;
+}
+
+
+
+
+/* CV styles ============== */
+
+.workContent {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0px;
+
+    height: 0px;
+    animation: heightRise 3s ease-in-out forwards;      /* Animation For the content ============================== */
+}
+
+.workContent .item {        /* will be animated with javascript but doesn't affect properties here <><><><><><><><><> */
+    position: relative;
+    flex: 0 0 50%;
+    overflow: hidden; /* due to scale animation*/
+    
+    opacity: 0%;                                /* Animation For the content ============================== */
+    animation-name: rise2;                    
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.workContent .item:hover {
+    cursor: pointer;
+}
+
+.item:first-of-type {
+    animation-delay: 0.1s;
+}
+
+.item:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.item:nth-of-type(3) {
+    animation-delay: 0.3s;
+}
+
+.item:nth-of-type(4) {
+    animation-delay: 0.4s;
+}
+
+.item:nth-of-type(5) {
+    animation-delay: 0.5s;
+}
+
+.item:nth-of-type(6) {
+    animation-delay: 0.6s;
+}
+
+.workContent .item video,
+.workContent .item picture img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
+
+.item .info {
+    text-align: center;
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    bottom: 0px;            /* For JavaScript animation <><><><><><><><><><><><><><><> */
+    left: 0px;
+    width: 100%;
+    padding: 0px 15px;
+    height: 0px;
+    opacity: 0%;
+    overflow: hidden;
+}
+
+.item .info span{
+    opacity: 0%;            /* For JavaScript animation <><><><><><><><><><><><><><><> */
+}
+
+.item .info .itemTitle {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.item .info .description {
+    font-size: 1em;
+}
+.item .info .description a, .item .info .description a:visited {
+    color: lightblue;
+}
+.item .info .description a:hover {
+    color: white;
+    font-weight: bold;
+}
+
+
+
+/* Contact styles ============ */
+
+.contactMain {
+    position: absolute;
+    z-index: 3;
+    top: 100vh;
+    display: none; /* Hidden and would be displayed by javascript <><><><><><><><><><> */
+    width: 80%;
+}
+
+.contactContent {
+    color: black;
+    height: 70vh;
+    background-image: url('../../Videos and photos/contact_bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contactContent .contactInfo {
+    width: max-content;
+    position: absolute;
+    top: 3%;
+    right: 10%;
+    font-size: 1.5vw;
+    margin-left: 60%;
+    margin-top: 2%;
+    text-align: left;
+}
+
+.name {
+    color: #333333;
+    font-weight: bold;
+    font-size: 5.5vw;
+    font-family: 'oswald', sans-serif;
+}
+
+.infoName {
+    color: #333333;
+    font-size: 2vw;
+    font-weight: 900;
+}
+
+.contactInfo .tel, .contactInfo .mail {
+    font-size: 2vw;
+    font-weight: 500;
+    user-select: text;
+}
+
+.mail {
+    color: darkred;
+}
+
+
+
+/* Services and About styles */
+
+.ad, .services, .about {
+    margin: 20px;
+}
+.ad {
+    display: block;
+    font-size: 1.5em;
+}
+.services, .about {
+    font-size: 1em;
+}
+.services {
+    margin: 40px;
+}
+.services h2 {
+    margin-left: -20px;
+}
+.services h2, .about h2 {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    padding-bottom: 25px;
+}
+.softwares {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+dd {
+    font-size: 0.8em;
+    padding-left: 40px;
+    position: relative;
+}
+dd::before {
+    position: absolute;
+    content: '●';
+    width: 10px;
+    height: 10px;
+    left: 15px;
+}
+
+
+
+
+/* Footer styles =============  */
+
+footer {                            /* Will be animated by javascript <><><><><><><><><><><> */
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    width: 160%;
+    left: -20%;
+    bottom: -60px;
+    opacity: 0%;
+    overflow: hidden;
+    position: absolute;
+}
+
+footer div {
+    padding-top: 20px;
+    margin: 0px 20px 20px 20px;
+}
+
+
+
+
+/* Scrollbar ============== */
+
+::-webkit-scrollbar {
+    background-color: black;
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 3px;
+}
+
+
+
+
+
+/* Media queries ============ */
+
+@media screen and (width >= 1450px) {
+    .contactContent {
+        height: 90vh;
+    }
+}
+
+@media screen and (1450px >= width >= 1200px) {
+    .contactContent {
+        height: 90vh;
+    }
+}
+
+@media screen and (1200px >= width >= 768px) {
+    .item .info .itemTitle {
+        font-size: 1em;
+    }
+    
+    .item .info .description {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header, .content {
+        margin: var(--responsive-margin, 60px);
+    }
+    .workContent .item {
+        flex: 0 0 100%;
+    }
+    .contactContent {
+        background-position: left;
+        width: 100%;
+    }
+    .videoBox .playerInfo {
+        width: 75%;
+    }
+    .close {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contactContent {
+        height: 40vh;
+        width: 100%;
+    }
+
+    .contactContent .contactInfo {
+        top: 5%;
+        right: 5%;
+    }
+    .videoBox .playerInfo {
+        width: 70%;
+    }
+    .close {
+        width: 30%;
+        padding-left: 0px;
+    }
+    .item .info .itemTitle {
+        font-size: 1em;
+    }
+    
+    .item .info .description {
+        font-size: 0.8em;
+    }
+    .close {
+        font-size: 1em;
+        top: 79%;
+        height: 80px;
+    }
+    .videoBox .playerInfo {
+        font-size: 0.5em;
+        height: 80px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contactContent {
+        width: calc(100% + 60px);    /*for the animation*/
+        margin-left: -60px; /*for the animation*/
+    }
+    .contactContent .contactInfo .tel,
+    .contactContent .contactInfo .mail {
+        font-size: 2vw;
+    }
+    .contactContent .infoName {
+        font-size: 2vw;
+    }
+    .name {
+        font-size: 5vw;
+    }
+}
+@media screen and (max-width: 300px) {
+    nav a {
+        margin-right: 15px;
+    }
+}
+
+
+
+
+/* Animations ============== */
+
+@keyframes rise {           /*rise animation for header*/
+    0% {
+        top: 400px;
+    }
+    66% {
+        top: 400px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+@keyframes rise2 {              /*rise animation for the vidoes*/
+    0% {
+        top: 400px;
+        opacity: 0%;
+    }
+    66% {
+        top: 400px;
+        opacity: 0%;
+    }
+    100% {
+        top: 0px;
+        opacity: 100%;
+    }
+}
+
+@keyframes heightRise {                 /* rise animation for the CV height */
+    0%{
+        height: 0px;
+    }
+    65%{
+        height: max-content;
+    }
+    100%{
+        height: max-content;
+    }
+}
+
+
+@keyframes tab {
+    0% {
+        right: 100%;
+        opacity: 0%;
+    }
+    100% {
+        right: 0%;
+        opacity: 100%;
+    }
+}
+
+
+
+
+
+
+/* JavaScript animations ============  */
+
+nav a.active::after {                           /* Animation for changing TABS */
+    animation: active 0.3s ease-in forwards;
+}
+@keyframes active {
+    0%{
+        right: 100%;
+    }
+    100%{
+        right: 0%;
+    }
+}
+
+nav a.inactive::after {
+    animation: inactive 0.3s ease-in forwards;
+}
+@keyframes inactive {
+    0%{
+        right: 0%;
+    }
+    100%{
+        right: 100%;
+    }
+}
+
+
+.inactiveContent {                                               /* Animation for changing TABS */
+    animation: inactiveContent 1s ease-in-out 0s forwards;
+    overflow-y: hidden;
+}
+@keyframes inactiveContent {
+    0%{
+        margin: 0px;
+        opacity: 100%;
+        height: max-content;
+    }
+    100% {
+        margin: 0px 20%;
+        opacity: 0%;
+        height: 90vh;
+    }
+}
+
+.activeContact {
+    display: block;
+    animation: activeContact 1s ease-in-out forwards;
+}
+@keyframes activeContact {
+    0% {
+        display: block;
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-76vh);
+        display: block;
+    }
+}
+@media screen and (max-width: 576px) {
+    .activeContact {
+        display: block;
+        animation: activeContactSmall 1s ease-in-out forwards;
+    }
+}
+@keyframes activeContactSmall {
+    0% {
+        display: block;
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-70vh);
+        display: block;
+    }
+}
+
+
+.activeContent {
+    animation: activeContent 1s ease-in-out forwards;
+}
+@keyframes activeContent {
+    0%{
+        margin: 0px 20%;
+        opacity: 0%;
+        height: 90vh;
+    }
+    100% {
+        margin: 0px;
+        opacity: 100%;
+        height: max-content;
+    }
+}
+
+.inactiveContact {
+    display: block;
+    animation: inactiveContact 1s ease-in-out forwards;
+}
+@keyframes inactiveContact {
+    0%{
+        transform: translateY(-70vh);
+        opacity: 100%;
+        height: 70vh;
+
+    }
+    99%{
+        transform: translateY(0vh);
+        opacity: 0%;
+        height: 70vh;
+    }
+    100% {
+        height: 0px;
+        overflow: hidden;
+    }
+}
+
+
+
+
+
+.activeItem .info{                                          /* Animation for hovering over videos */
+    animation: activeItem 0.5s ease-out forwards;
+}
+.activeItem .info span{
+    animation: activeItemSpan 0.5s ease-out forwards;
+}
+.activeItem .info span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+.activeItem .info span:last-of-type{
+    animation-delay: 0.4s;
+}
+@keyframes activeItem {
+    0%{
+        transform: scale(100%);
+        height: 0px;
+    }
+    100%{
+        height: 100%;
+        opacity: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}
+@keyframes activeItemSpan {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+.inactiveItem .info{
+    animation: inactiveItem 1s ease-out forwards;
+}
+.inactiveItem .info span{
+    animation: inactiveItemSpan 0.5s ease-out forwards;
+}
+@keyframes inactiveItem {
+    0%{
+        height: 100%;
+        opacity: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    50%{
+        transform: scale(150%);
+        opacity: 0%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%{
+        transform: scale(100%);
+        height: 0px;
+    }
+}
+@keyframes inactiveItemSpan {
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}
+
+
+
+
+footer.activeFooter {                           /* Animation for hovering over videos */
+    position: fixed;
+    z-index: 3;
+    animation: activeFooter 0.5s ease-in forwards;
+}
+@keyframes activeFooter {
+    0%{
+        bottom: -60px;
+        width: 160%;
+        left: -20%;
+        opacity: 0%;
+    }
+    100%{
+        bottom: 0px;
+        width: 100%;
+        left: 0%;
+        opacity: 100%;
+    }
+}
+
+footer.inactiveFooter {
+    position: fixed;
+    animation: inactiveFooter 0.5s ease-out forwards;
+}
+@keyframes inactiveFooter {
+    0%{
+        bottom: 0px;
+        width: 100%;
+        left: 0%;
+        opacity: 100%;
+    }
+    50%{
+        bottom: -60px;
+        width: 100%;
+        left: 0%;
+        opacity: 100%;
+    }
+    100%{
+        bottom: -60px;
+        width: 160%;
+        left: -20%;
+        opacity: 0%;
+    }
+}
+
+
+
+
+
+.videoBox.activeBox {                                    /* Animation for activating a video box */
+    animation: activeBox 1s ease-out forwards;
+}
+@keyframes activeBox {
+    0%{
+        height: 0px;
+        transform: rotateX(90deg);
+        opacity: 0%;
+        width: 50%;
+        left: 25%;
+    }
+    50%{
+        height: 58vw;
+        transform: rotateX(90deg);
+        opacity: 0%;
+    }
+    100%{
+        height: 58vw;
+        transform: rotateX(0deg);
+        opacity: 100%;
+        width: 100%;
+        left: 0%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .videoBox.activeBox {
+    animation: activeBoxS 1s ease-out forwards;
+    }
+}
+@keyframes activeBoxS {
+    0%{
+        height: 0px;
+        transform: rotateX(90deg);
+        opacity: 0%;
+        width: 50%;
+        left: 25%;
+    }
+    50%{
+        height: 64vw;
+        transform: rotateX(90deg);
+        opacity: 0%;
+    }
+    100%{
+        height: 64vw;
+        transform: rotateX(0deg);
+        opacity: 100%;
+        width: 100%;
+        left: 0%;
+    }
+}
+
+
+
+.videoBox.inactiveBox {
+    animation: inactiveBox 1s ease-in-out forwards;
+}
+@keyframes inactiveBox {
+    0%{
+        height: 64vw;
+        transform: rotateX(0deg);
+        opacity: 100%;
+        width: 100%;
+        left: 0%;
+    }
+    50%{
+        height: 58vw;
+    }
+    100%{
+        height: 0px;
+        transform: rotateX(90deg);
+        opacity: 0%;
+        width: 50%;
+        left: 25%;
+    }
+}
+
+.CVunavailable {
+    animation: CVunavailable 1s ease-in-out forwards;
+}
+@keyframes CVunavailable {
+    0% {
+        opacity: 100%;
+        pointer-events: none;
+    }
+    100% {
+        opacity: 50%;
+        pointer-events: none;
+    }
+}
+
+.CVavailable {
+    animation: CVavailable 1s ease-in-out forwards;
+}
+@keyframes CVavailable {
+    0% {
+        opacity: 50%;
+        pointer-events: auto;
+    }
+    100% {
+        opacity: 100%;
+        pointer-events: auto;
+    }
+}
+
+
+
+
+
+
