@@ -172,13 +172,28 @@ close.addEventListener('click',
 
 
 //sticky footer
+
 window.onscroll = function () {
-if (window.scrollY >= 310) {
-    footer.classList.add('activeFooter');
-    footer.classList.remove('inactiveFooter');
-} else {
-    footer.classList.add('inactiveFooter');
-    footer.classList.remove('activeFooter');
-}
-}
+        if (window.innerHeight + 200 < body.scrollHeight) {
+        if (window.scrollY >= 150) {
+            footer.classList.add('activeFooter');
+            footer.classList.remove('inactiveFooter');
+        } else {
+            footer.classList.add('inactiveFooter');
+            footer.classList.remove('activeFooter');
+            }
+        }
+    }
+
+setInterval( _ => {
+        if (window.innerHeight + 200 > body.scrollHeight) {
+            footer.classList.add('activeFooter');
+            footer.classList.remove('inactiveFooter');
+    }
+    } 
+    ,100)
+
+
+
+
 

@@ -140,7 +140,7 @@ nav a:first-of-type::after {
     background-color: white;
     height: max-content;
     width: 80%;
-    height: 120px;
+    height: 80px;
     color: black;
     padding: 15px;
     display: flex;
@@ -148,9 +148,13 @@ nav a:first-of-type::after {
     justify-content: center;
 }
 
+.playerInfo .playerItemTitle {
+    font-weight: bold;
+}
+
 .close {
     background-color: white;
-    height: 120px;
+    height: 80px;
     width: 20%;
     color: red;
     font-size: 2em;
@@ -325,6 +329,28 @@ nav a:first-of-type::after {
     color: darkred;
 }
 
+.links {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    pointer-events: fill;
+}
+
+.links a, .links a:hover, .links a:visited, .links:active {
+    color: black;
+    text-decoration: none;
+}
+
+.links a i {
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
 
 
 /* Services and About styles */
@@ -450,9 +476,19 @@ footer div {
     }
     .videoBox .playerInfo {
         width: 75%;
+        font-size: 0.8em;
     }
     .close {
         width: 25%;
+        font-size: 1.5em;
+    }
+    .links {
+        margin-top: 15px;
+        gap: 5%;
+    }
+    
+    .links i {
+        font-size: 20px;
     }
 }
 
@@ -489,6 +525,9 @@ footer div {
         font-size: 0.5em;
         height: 80px;
     }
+    .ad {
+        font-size: 1em;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -505,6 +544,14 @@ footer div {
     }
     .name {
         font-size: 5vw;
+    }
+    .links {
+        margin-top: 10px;
+        gap: 5%;
+    }
+    
+    .links i {
+        font-size: 10px;
     }
 }
 @media screen and (max-width: 300px) {
@@ -759,10 +806,10 @@ nav a.inactive::after {
 
 
 
-footer.activeFooter {                           /* Animation for hovering over videos */
+footer.activeFooter {                           /* Animation for footer */
     position: fixed;
     z-index: 3;
-    animation: activeFooter 0.5s ease-in forwards;
+    animation: activeFooter 0.3s ease-in forwards;
 }
 @keyframes activeFooter {
     0%{
