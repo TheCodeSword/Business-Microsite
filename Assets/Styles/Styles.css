@@ -474,7 +474,6 @@ footer div {
     .contactContent {
         background-position: left;
         width: 100%;
-        margin-top: 15vw;   /* for some reason the browser said I applied position static to contact div*/
     }
     .contactContent .contactInfo {   /* for some reason the browser said I applied position static to contact div*/
         top: 8.5%;
@@ -492,7 +491,7 @@ footer div {
         gap: 5%;
     }
     
-    .links i {
+    .links a i {
         font-size: 20px;
     }
 }
@@ -556,7 +555,7 @@ footer div {
         gap: 5%;
     }
     
-    .links i {
+    .links a i {
         font-size: 10px;
     }
 }
@@ -681,10 +680,28 @@ nav a.inactive::after {
         transform: translateY(0vh);
     }
     100% {
-        transform: translateY(-72vh);
+        transform: translateY(-70vh);
         display: block;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .activeContact {
+        display: block;
+        animation: activeContactMed 1s ease-in-out forwards;
+    }
+}
+@keyframes activeContactMed {
+    0% {
+        display: block;
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-50vh);
+        display: block;
+    }
+}
+
 @media screen and (max-width: 576px) {
     .activeContact {
         display: block;
@@ -697,7 +714,7 @@ nav a.inactive::after {
         transform: translateY(0vh);
     }
     100% {
-        transform: translateY(-68vh);
+        transform: translateY(-63vh);
         display: block;
     }
 }
@@ -741,6 +758,53 @@ nav a.inactive::after {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .inactiveContact {
+        display: block;
+        animation: inactiveContactMed 1s ease-in-out forwards;
+    }
+}
+@keyframes inactiveContactMed {
+    0%{
+        transform: translateY(-50vh);
+        opacity: 100%;
+        height: 70vh;
+
+    }
+    99%{
+        transform: translateY(0vh);
+        opacity: 0%;
+        height: 70vh;
+    }
+    100% {
+        height: 0px;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .inactiveContact {
+        display: block;
+        animation: inactiveContactSmall 1s ease-in-out forwards;
+    }
+}
+@keyframes inactiveContactSmall {
+    0%{
+        transform: translateY(-63vh);
+        opacity: 100%;
+        height: 70vh;
+
+    }
+    99%{
+        transform: translateY(0vh);
+        opacity: 0%;
+        height: 70vh;
+    }
+    100% {
+        height: 0px;
+        overflow: hidden;
+    }
+}
 
 
 
