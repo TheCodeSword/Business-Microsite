@@ -685,7 +685,7 @@ nav a.inactive::after {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (min-aspect-ratio: 2/1) {
     .activeContact {
         display: block;
         animation: activeContactMed 1s ease-in-out forwards;
@@ -758,7 +758,7 @@ nav a.inactive::after {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (min-aspect-ratio: 2/1) {
     .inactiveContact {
         display: block;
         animation: inactiveContactMed 1s ease-in-out forwards;
