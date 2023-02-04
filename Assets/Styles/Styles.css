@@ -474,6 +474,10 @@ footer div {
     .contactContent {
         background-position: left;
         width: 100%;
+        margin-top: 15vw;   /* for some reason the browser said I applied position static to contact div*/
+    }
+    .contactContent .contactInfo {   /* for some reason the browser said I applied position static to contact div*/
+        top: 8.5%;
     }
     .videoBox .playerInfo {
         width: 75%;
@@ -500,7 +504,7 @@ footer div {
     }
 
     .contactContent .contactInfo {
-        top: 5%;
+        top: 6%;   /* for some reason the browser said I applied position static to contact div*/
         right: 5%;
     }
     .videoBox .playerInfo {
@@ -535,6 +539,7 @@ footer div {
     .contactContent {
         width: calc(100% + 60px);    /*for the animation*/
         margin-left: -60px; /*for the animation*/
+        margin-top: 10vw;   /* for some reason the browser said I applied position static to contact div*/
     }
     .contactContent .contactInfo .tel,
     .contactContent .contactInfo .mail {
@@ -676,7 +681,7 @@ nav a.inactive::after {
         transform: translateY(0vh);
     }
     100% {
-        transform: translateY(-76vh);
+        transform: translateY(-72vh);
         display: block;
     }
 }
@@ -692,7 +697,7 @@ nav a.inactive::after {
         transform: translateY(0vh);
     }
     100% {
-        transform: translateY(-70vh);
+        transform: translateY(-68vh);
         display: block;
     }
 }
