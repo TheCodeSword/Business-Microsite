@@ -1,9 +1,7 @@
+/* Resets and body styles ============= */
 
-/* Resets ============= */
-
-:root {
-    --standard-margin: 10%;
-    --responsive-margin: 60px;
+::root {
+    --initial-down: 30vh;
 }
 
 * {
@@ -18,375 +16,485 @@ html {
 
 body {
     background-color: black;
+
     color: white;
     font-family: 'Montserrat', sans-serif;
+
     position: relative;
     user-select: none;
     overflow-x: hidden;
 }
 
+.container {
+    width: 70%;
+    margin: auto;
+}
+
+
+
 
 /* Header styles ============== */
 
 header {
-    position: relative;
-    margin: 60px var(--standard-margin, 10%);
-
-    animation-name: rise;                    /* Animation For header ============================== */
-    animation-duration: 3s;
-    animation-delay: 0s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-header h1 {
-    font-weight: bold;
-    font-size: 3em;
-}
-
-header span {
-    color: grey;
-    font-size: 20px;
-}
-
-
-
-
-
-/* content styles ============== */
-
-.content {
-    margin: 20px var(--standard-margin, 5%);
-    margin-bottom: 30px;
-}
-
-
-/* Nav styles ============= */
-nav {
-    padding-bottom: 40px;
-}
-
-nav a {
-    position: relative;
-    display: inline-block;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    margin-right: 25px;
-
-    animation: rise 3s ease-in-out forwards;                    /* Animation For the nav ============================== */
-}
-
-nav a span {
-    position: relative;
-    opacity: 0;
-    animation: tab 0.5s 1s ease-in-out forwards;       /* tab sliding animation =========================== */
-}
-
-nav a:first-of-type{
-    z-index: 2;
-}
-
-nav a::before {
-    position: absolute;
-    display: inline-block;
-    z-index: 1;
-    content: '';
-    background-color: black;
-    width: 100%;
-    height: 200%;
-    top: 0px;
-    right: 100%;
-}
-
-nav a::after {
-    position: absolute;
-    display: inline-block;
-    content: '';
-    background-color: white;
-    width: 100%;
-    height: 4px;
-    top: 25px;
-    right: 100%;
-}
-
-nav a:first-of-type::after {
-    animation: tab 0.5s 1.5s ease-in-out forwards;       /* tab sliding animation =========================== */
-}
-
-
-
-
-/* Video Box styles ================ */
-
-.videoBox {
-    position: relative;
-    background-color: black;
-    width: 80%;
-    height: 0px;
-    transform: rotateX(90deg);
-    transform-origin: 50% 150%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-flow: row nowrap;
+    gap: 2vw;
+
+    position: relative;                         /*for the animation*/
+    top: var(--initial-down, 30vh);
+    animation: rise 1s ease-in-out 3s forwards;
 }
 
-.videoBox video {
-    pointer-events: none;
+header picture img {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* .headerDetails h1 {
+    font-size: 60px;
+}
+
+.headerDetails span {
+    font-size: 20px;
+} */
+
+
+
+/* nav styles ============== */
+
+nav {
+    margin: 30px 0px;
+
+    position: relative;                         /*for the animation*/
+    top: var(--initial-down, 30vh);
+    animation: rise 1s ease-in-out 3s forwards;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 2%;
+}
+
+nav ul li {
+    list-style-type: none;
+    position: relative;
+    width: max-content;
+    margin: 10px;
+    padding-bottom: 10px;
+
+    overflow: hidden;
+}
+
+nav ul li:hover {
+    cursor: pointer;
+}
+
+nav ul li span {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
+    transform: translateX(-105%);                 /* for the animation */
+    animation: slide 0.5s ease-in-out forwards;
+}
+nav ul li:first-of-type span {
+    animation-delay: 1s;
+}
+nav ul li:nth-of-type(2) span {
+    animation-delay: 1.1s;
+}
+nav ul li:nth-of-type(3) span {
+    animation-delay: 1.2s;
+}
+nav ul li:nth-of-type(4) span {
+    animation-delay: 1.3s;
+}
+
+nav ul li::after {
+    position: absolute;
+    content: '';
+    display: block;
+
+    width: 0%;
+    height: 5px;
+    background-color: white;
+
+    bottom: 0px;
+    left: 0px;
+
+    transform: translateX(-105%);                 /* for the animation */
+    animation: slide 0.5s ease-in-out 2s forwards;
+}
+
+nav ul li.activeTab::after {
+    width: 100%;
+}
+
+
+
+
+/* content and pages styles */
+.content {
+    position: relative;
+}
+
+#preserveHeight {
+    position: unset;
+}
+
+.content .page {
+    position: absolute;
+    top: 100%;
+    overflow: hidden;
+}
+
+.content .workContent {
+    position: relative;
+    top: 0%;
+    bottom: auto;
+}
+
+
+
+
+/* Video player styles */
+
+.player {
+    position: absolute;                            /*for javascript animation =================== */
+    z-index: -1;
+    top: 0%;
+    left: 10%;
+    opacity: 0;
+
+    height: max-content;
+    width: 80%;
+    overflow: hidden;
+    transform: perspective(300px) rotateX(45deg) scale(0.7, 0.7);
+    transform-origin: 50% 100%;
+}
+
+.player .videoPlayer iframe {
     width: 100%;
     aspect-ratio: 16/9;
 }
 
-.videoBox .playerInfo {
-    background-color: white;
-    height: max-content;
-    width: 80%;
-    height: 80px;
-    color: black;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.popupCover {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    opacity: 0%;
+    top: 3%;
+    left: 88%;
 }
 
-.playerInfo .playerItemTitle {
+.playerContent {
+    color: black;
+    background-color: white;
+    height: max-content;
+    padding: 20px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+}
+
+.playerInfo {
+    flex-grow: 1;
+    width: max-content;
+}
+
+.playerInfo span {
+    display: block;
+}
+
+.playerItemTitle {
+    font-size: 30px;
     font-weight: bold;
 }
 
+.playerDescription {
+    font-size: 20px;
+}
+
 .close {
-    background-color: white;
-    height: 80px;
-    width: 20%;
+    flex-grow: 0;
+    width: max-content;
+
     color: red;
-    font-size: 2em;
+    font-size: 50px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.close span {
+.close:hover, .close:active {
     cursor: pointer;
-}
-
-.close span:hover {
     color: darkred;
 }
 
 
 
 
-/* CV styles ============== */
+/* Video gallery styles */
 
-.workContent {
-    position: relative;
+.videoGallery {
+    margin: 20px auto;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
     gap: 0px;
 
-    height: 0px;
-    animation: heightRise 3s ease-in-out forwards;      /* Animation For the content ============================== */
+    position: relative;                 /* for the animation */
 }
 
-.workContent .item {        /* will be animated with javascript but doesn't affect properties here <><><><><><><><><> */
+.item {
     position: relative;
     flex: 0 0 50%;
-    overflow: hidden; /* due to scale animation*/
-    
-    opacity: 0%;                                /* Animation For the content ============================== */
-    animation-name: rise2;                    
-    animation-duration: 3s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+
+    top: var(--initial-down, 30vh);                          /* for the animation */
+    opacity: 0%;
+    animation: rise 1s ease-in-out forwards,
+                fadeIn 1s ease-in-out forwards;
+}
+.item:first-of-type {
+    animation-delay: 3.1s;
+}
+.item:nth-of-type(2) {
+    animation-delay: 3.2s;
+}
+.item:nth-of-type(3) {
+    animation-delay: 3.3s;
+}
+.item:nth-of-type(4) {
+    animation-delay: 3.4s;
 }
 
-.workContent .item:hover {
+.item:hover {
     cursor: pointer;
 }
 
-.item:first-of-type {
-    animation-delay: 0.1s;
-}
-
-.item:nth-of-type(2) {
-    animation-delay: 0.2s;
-}
-
-.item:nth-of-type(3) {
-    animation-delay: 0.3s;
-}
-
-.item:nth-of-type(4) {
-    animation-delay: 0.4s;
-}
-
-.item:nth-of-type(5) {
-    animation-delay: 0.5s;
-}
-
-.item:nth-of-type(6) {
-    animation-delay: 0.6s;
-}
-
-.workContent .item video,
-.workContent .item picture img {
-    display: block;
+.item video {
     width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: contain;
 }
 
 .item .info {
-    text-align: center;
     position: absolute;
+    bottom: 0%;
+    width: 100%;
+
+    background-color: black;
+    
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-
-    bottom: 0px;            /* For JavaScript animation <><><><><><><><><><><><><><><> */
-    left: 0px;
-    width: 100%;
-    padding: 0px 15px;
-    height: 0px;
+    gap: 10px;
+    
+    height: 0%;                            /*for javascript animation =================== */
     opacity: 0%;
     overflow: hidden;
 }
 
-.item .info span{
-    opacity: 0%;            /* For JavaScript animation <><><><><><><><><><><><><><><> */
+.item .info span {
+    width: 70%;
+    text-align: center;
+
+    opacity: 0%;                           /* for javascript animation =================== */
 }
 
-.item .info .itemTitle {
-    font-weight: bold;
-    font-size: 2em;
-}
-
-.item .info .description {
-    font-size: 1em;
-}
-.item .info .description a, .item .info .description a:visited {
-    color: lightblue;
-}
-.item .info .description a:hover {
-    color: white;
+.item .info .videoTitle {
+    font-size: 30px;
     font-weight: bold;
 }
 
 
 
-/* Contact styles ============ */
+/* Services TAB */
 
-.contactMain {
-    position: absolute;
-    z-index: 3;
-    top: 100vh;
-    display: none; /* Hidden and would be displayed by javascript <><><><><><><><><><> */
-    width: 80%;
+.services {
+    max-height: 0px;                          /*for javascript animation =================== */
 }
 
-.contactContent {
-    color: black;
-    height: 70vh;
+.services  picture img {
+    width: 100%;
+}
+
+.services h2 {
+    padding-top: 30px;
+    margin-left: 10px;
+    text-decoration: underline solid 4px;
+    text-underline-offset: 10px;
+}
+
+.services ul {
+    margin: 30px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+
+
+/* Contact Tab */
+
+.contact {
+    max-height: 0px;                           /*for javascript animation ===================  */
+    width: 100%;
+}
+
+.contactInfo {
     background-image: url('../../Videos and photos/contact_bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    aspect-ratio: 3/2;
+
+    color: black;
+
+    position: relative;
 }
 
-.contactContent .contactInfo {
-    width: max-content;
+.contactInfo .contactInfoWrapper {
     position: absolute;
-    top: 3%;
+    top: 10%;
     right: 10%;
-    font-size: 1.5vw;
-    margin-left: 60%;
-    margin-top: 2%;
-    text-align: left;
 }
 
-.name {
-    color: #333333;
+.contactInfo .contactInfoWrapper h2 {
+    font-size: 70px;
     font-weight: bold;
-    font-size: 5.5vw;
-    font-family: 'oswald', sans-serif;
 }
 
 .infoName {
     color: #333333;
-    font-size: 2vw;
+    font-size: 35px;
     font-weight: 900;
 }
 
-.contactInfo .tel, .contactInfo .mail {
-    font-size: 2vw;
+.mail {
+    font-size: 30px;
     font-weight: 500;
     user-select: text;
-}
-
-.mail {
     color: darkred;
 }
 
 .links {
-    margin-top: 20px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
     align-items: center;
-    gap: 5%;
-    pointer-events: fill;
+    justify-content: center;
+    gap: 20px;
 }
 
-.links a, .links a:hover, .links a:visited, .links:active {
+.contactInfo .contactInfoWrapper .links a, .contactInfo .contactInfoWrapper .links a:hover {
+    font-size: 40px;
     color: black;
     text-decoration: none;
 }
 
-.links a i {
-    font-size: 30px;
-    text-align: center;
-    text-decoration: none;
+.sendReq {
+    margin: 30px 0px;
 }
 
-
-
-
-/* Services and About styles */
-
-.ad, .services, .about {
-    margin: 20px;
+.sendReq h2 {
+    text-decoration: underline solid 4px;
+    text-underline-offset: 10px;
+    padding-bottom: 20px;
 }
-.ad {
+
+input {
     display: block;
-    font-size: 1.5em;
+    margin-bottom: 20px;
+    
+    padding: 10px;
+    width: 80%;
+    background-color: black;
+    border: none;
+    border-bottom: 2px solid lightgrey;
+    color: white;
+    caret-color: white;
 }
-.services, .about {
-    font-size: 1em;
+
+input::placeholder {
+    font-size: 15px;
 }
-.services {
-    margin: 40px;
+
+input:focus {
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
 }
-.services h2 {
-    margin-left: -20px;
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s,
+    color 600000s 0s;
 }
-.services h2, .about h2 {
+
+form button {
+    background-color: black;
+    width: 100px;
+    height: 50px;
+
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+
+    border: lightgrey solid 1px;
+    border-radius: 10px;
+}
+
+form button:hover {
+    background-color: darkgrey;
+    cursor: pointer;
+}
+
+
+
+
+/* About TAB */
+
+.about {
+    max-height: 0px;                          /*for javascript animation =================== */
+}
+
+.aboutDescription {
+    margin-bottom: 20px;
+}
+
+.about h2 {
     text-decoration: underline;
     text-underline-offset: 10px;
     padding-bottom: 25px;
-}
-.softwares {
-    display: block;
     margin-top: 40px;
-    margin-bottom: 100px;
 }
+
+.softwaresDescription {
+    font-size: 20px;
+    text-decoration: underline;
+
+    display: block;
+    padding-bottom: 20px;
+}
+
+dt {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 dd {
-    font-size: 0.8em;
+    font-size: 15px;
     padding-left: 40px;
     position: relative;
 }
+
 dd::before {
     position: absolute;
     content: '●';
@@ -397,24 +505,24 @@ dd::before {
 
 
 
+/* Footer styles */
 
-/* Footer styles =============  */
+footer {
+    position: fixed;
+    bottom: 0%;
 
-footer {                            /* Will be animated by javascript <><><><><><><><><><><> */
+    transform: translateY(100%);                        /*for javascript animation =================== */
+    opacity: 0%;
+
+    height: max-content;
+    padding: 20px;
+    width: 140%;
+    margin-left: -20%;
+
     background-color: black;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    width: 160%;
-    left: -20%;
-    bottom: -60px;
-    opacity: 0%;
-    overflow: hidden;
-    position: absolute;
-}
-
-footer div {
-    padding-top: 20px;
-    margin: 0px 20px 20px 20px;
 }
 
 
@@ -438,599 +546,290 @@ footer div {
 
 
 
+                    /* ============================ Media Queries  ============================ */
 
-
-/* Media queries ============ */
-
-@media screen and (width >= 1450px) {
-    .contactContent {
-        height: 90vh;
+/* for landscape tablets X */
+@media screen and (max-width: 1200px) {
+    .playerItemTitle {
+        font-size: 25px;
     }
-}
-
-@media screen and (1450px >= width >= 1200px) {
-    .contactContent {
-        height: 90vh;
-    }
-}
-
-@media screen and (1200px >= width >= 768px) {
-    .item .info .itemTitle {
-        font-size: 1em;
-    }
-    
-    .item .info .description {
-        font-size: 0.8em;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    header, .content {
-        margin: var(--responsive-margin, 60px);
-    }
-    .workContent .item {
-        flex: 0 0 100%;
-    }
-    .contactContent {
-        background-position: left;
-        width: 100%;
-    }
-    .contactContent .contactInfo {   /* for some reason the browser said I applied position static to contact div*/
-        top: 8.5%;
-    }
-    .videoBox .playerInfo {
-        width: 75%;
-        font-size: 0.8em;
+    .playerDescription {
+        font-size: 15px;
     }
     .close {
-        width: 25%;
-        font-size: 1.5em;
+        font-size: 40px;
+    }
+
+
+    .item .info {
+        gap: 5px;
+    }
+    .item .info .videoTitle {
+        font-size: 20px;
+    }
+    .item .info .videoDescription {
+        font-size: 13px;
+    }
+
+
+    .contactInfo .contactInfoWrapper {
+        top: 10%;
+        right: 5%;
+    }
+    .contactInfo .contactInfoWrapper h2 {
+        font-size: 50px;
+    }
+    .infoName {
+        font-size: 28px;
+    }
+    .mail {
+        font-size: 20px;
     }
     .links {
-        margin-top: 15px;
-        gap: 5%;
+        gap: 10px;
     }
-    
-    .links a i {
+    .contactInfo .contactInfoWrapper .links a, .contactInfo .contactInfoWrapper .links a:hover {
+        font-size: 30spx;
+    }
+}
+
+
+
+/* for portrait tablets XX */
+@media screen and (max-width: 992px) {
+    header picture img {
+        width: 300px;
+        height: 150px;
+    }
+    /* .headerDetails h1 {
+        font-size: 40px;
+    } */
+
+    .player {
+        width: 100%;
+        left: 0%;
+    }
+    .popupCover {
+        top: 6%;
+        left: 86%;
+    }
+
+
+    .item {
+        flex: 0 0 100%;
+    }
+    .item .info {
+        gap: 10px;
+    }
+    .item .info .videoTitle {
+        font-size: 30px;
+    }
+    .item .info .videoDescription {
+        font-size: 15px;
+    }
+
+
+    .contactInfo .contactInfoWrapper {
+        top: 10%;
+        right: 5%;
+    }
+    .contactInfo .contactInfoWrapper h2 {
+        font-size: 30px;
+    }
+    .infoName {
+        font-size: 20px;
+    }
+    .mail {
+        font-size: 15px;
+    }
+    .contactInfo .contactInfoWrapper .links a, .contactInfo .contactInfoWrapper .links a:hover {
+        font-size: 25px;
+    }
+}
+
+
+
+/* for landscape phones XXX */
+@media screen and (max-width: 768px) {
+    header picture img {
+        width: 250px;
+        height: 125px;
+    }
+    /* .headerDetails h1 {
+        font-size: 50px;
+    } */
+
+    nav {
+        margin: 20px 0px;
+    }
+    nav ul li span {
+        font-size: 15px;
+    }
+
+
+    .playerItemTitle {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .playerDescription {
+        font-size: 11px;
+    }
+    .close {
+        font-size: 30px;
+    }
+
+
+    .item .info {
+        gap: 5px;
+    }
+    .item .info .videoTitle {
+        font-size: 20px;
+    }
+    .item .info .videoDescription {
+        font-size: 12px;
+    }
+
+
+    .contactInfo .contactInfoWrapper {
+        top: 10%;
+        right: 5%;
+    }
+    .contactInfo .contactInfoWrapper h2 {
+        font-size: 25px;
+    }
+    .infoName {
+        font-size: 18px;
+    }
+    .mail {
+        font-size: 11px;
+    }
+    .contactInfo .contactInfoWrapper .links a, .contactInfo .contactInfoWrapper .links a:hover {
         font-size: 20px;
     }
 }
 
+
+/* for portrait phones XXXX*/
 @media screen and (max-width: 576px) {
-    .contactContent {
-        height: 40vh;
-        width: 100%;
+    header picture img {
+        background-size: contain;
+        width: 150px;
+        height: 75px;
+    }
+    .headerDetails h1 {
+        font-size: 35px;
     }
 
-    .contactContent .contactInfo {
-        top: 6%;   /* for some reason the browser said I applied position static to contact div*/
-        right: 5%;
+    nav ul li {
+        margin: 2px;
     }
-    .videoBox .playerInfo {
-        width: 70%;
+    nav ul li span {
+        font-size: 12px;
     }
-    .close {
-        width: 30%;
-        padding-left: 0px;
+    nav ul li.activeTab::after {
+        height: 3px;
     }
-    .item .info .itemTitle {
-        font-size: 1em;
-    }
-    
-    .item .info .description {
-        font-size: 0.8em;
-    }
-    .close {
-        font-size: 1em;
-        top: 79%;
-        height: 80px;
-    }
-    .videoBox .playerInfo {
-        font-size: 0.5em;
-        height: 80px;
-    }
-    .ad {
-        font-size: 1em;
-    }
-}
 
-@media screen and (max-width: 400px) {
-    .contactContent {
-        width: calc(100% + 60px);    /*for the animation*/
-        margin-left: -60px; /*for the animation*/
-        margin-top: 10vw;   /* for some reason the browser said I applied position static to contact div*/
+
+    .popupCover {
+        width: 15%;
+        height: 15%;
+        top: 8%;
+        left: 82%;
     }
-    .contactContent .contactInfo .tel,
-    .contactContent .contactInfo .mail {
-        font-size: 2vw;
+    .playerContent {
+        gap: 8px;
     }
-    .contactContent .infoName {
-        font-size: 2vw;
+    .playerItemTitle {
+        font-size: 15px;
+        font-weight: bold;
     }
-    .name {
-        font-size: 5vw;
-    }
-    .links {
-        margin-top: 10px;
-        gap: 5%;
-    }
-    
-    .links a i {
+    .playerDescription {
         font-size: 10px;
     }
-}
-@media screen and (max-width: 300px) {
-    nav a {
-        margin-right: 15px;
+    .close {
+        font-size: 20px;
+    }
+
+
+    .item .info {
+        gap: 5px;
+    }
+    .item .info .videoTitle {
+        font-size: 15px;
+    }
+    .item .info .videoDescription {
+        font-size: 10px;
+    }
+
+
+    .contactInfo .contactInfoWrapper {
+        top: 3%;
+        right: 0%;
+    }
+    .contactInfo .contactInfoWrapper h2 {
+        font-size: 25px;
+    }
+    .infoName {
+        font-size: 15px;
+    }
+    .mail {
+        font-size: 10px;
+    }
+    .contactInfo .contactInfoWrapper .links a, .contactInfo .contactInfoWrapper .links a:hover {
+        font-size: 15px;
     }
 }
 
 
+/* for small phones XXXXX */
 
-
-/* Animations ============== */
-
-@keyframes rise {           /*rise animation for header*/
-    0% {
-        top: 400px;
+@media screen and (max-width: 400px) {
+    .container {
+        width: 90%;
+        margin: auto;
     }
-    66% {
-        top: 400px;
+
+    .popupCover {
+        top: 10%;
+        left: 78%;
     }
+
+    form button {
+        width: 80px;
+        height: 40px;
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+
+                        /* ======================== Initial animations ============================= */
+
+
+@keyframes rise {
+    0%{}
     100% {
         top: 0px;
     }
 }
 
-@keyframes rise2 {              /*rise animation for the vidoes*/
-    0% {
-        top: 400px;
-        opacity: 0%;
-    }
-    66% {
-        top: 400px;
-        opacity: 0%;
-    }
+@keyframes slide {
+    0%{}
     100% {
-        top: 0px;
-        opacity: 100%;
+        transform: translateX(0%);
     }
 }
 
-@keyframes heightRise {                 /* rise animation for the CV height */
-    0%{
-        height: 0px;
-    }
-    65%{
-        height: max-content;
-    }
-    100%{
-        height: max-content;
-    }
-}
-
-
-@keyframes tab {
-    0% {
-        right: 100%;
-        opacity: 0%;
-    }
-    100% {
-        right: 0%;
-        opacity: 100%;
-    }
-}
-
-
-
-
-
-
-/* JavaScript animations ============  */
-
-nav a.active::after {                           /* Animation for changing TABS */
-    animation: active 0.3s ease-in forwards;
-}
-@keyframes active {
-    0%{
-        right: 100%;
-    }
-    100%{
-        right: 0%;
-    }
-}
-
-nav a.inactive::after {
-    animation: inactive 0.3s ease-in forwards;
-}
-@keyframes inactive {
-    0%{
-        right: 0%;
-    }
-    100%{
-        right: 100%;
-    }
-}
-
-
-.inactiveContent {                                               /* Animation for changing TABS */
-    animation: inactiveContent 1s ease-in-out 0s forwards;
-    overflow-y: hidden;
-}
-@keyframes inactiveContent {
-    0%{
-        margin: 0px;
-        opacity: 100%;
-        height: max-content;
-    }
-    100% {
-        margin: 0px 20%;
-        opacity: 0%;
-        height: 90vh;
-    }
-}
-
-.activeContact {
-    display: block;
-    animation: activeContact 1s ease-in-out forwards;
-}
-@keyframes activeContact {
-    0% {
-        display: block;
-        transform: translateY(0vh);
-    }
-    100% {
-        transform: translateY(-70vh);
-        display: block;
-    }
-}
-
-@media screen and (min-aspect-ratio: 2/1) {
-    .activeContact {
-        display: block;
-        animation: activeContactMed 1s ease-in-out forwards;
-    }
-}
-@keyframes activeContactMed {
-    0% {
-        display: block;
-        transform: translateY(0vh);
-    }
-    100% {
-        transform: translateY(-50vh);
-        display: block;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .activeContact {
-        display: block;
-        animation: activeContactSmall 1s ease-in-out forwards;
-    }
-}
-@keyframes activeContactSmall {
-    0% {
-        display: block;
-        transform: translateY(0vh);
-    }
-    100% {
-        transform: translateY(-63vh);
-        display: block;
-    }
-}
-
-
-.activeContent {
-    animation: activeContent 1s ease-in-out forwards;
-}
-@keyframes activeContent {
-    0%{
-        margin: 0px 20%;
-        opacity: 0%;
-        height: 90vh;
-    }
-    100% {
-        margin: 0px;
-        opacity: 100%;
-        height: max-content;
-    }
-}
-
-.inactiveContact {
-    display: block;
-    animation: inactiveContact 1s ease-in-out forwards;
-}
-@keyframes inactiveContact {
-    0%{
-        transform: translateY(-70vh);
-        opacity: 100%;
-        height: 70vh;
-
-    }
-    99%{
-        transform: translateY(0vh);
-        opacity: 0%;
-        height: 70vh;
-    }
-    100% {
-        height: 0px;
-        overflow: hidden;
-    }
-}
-
-@media screen and (min-aspect-ratio: 2/1) {
-    .inactiveContact {
-        display: block;
-        animation: inactiveContactMed 1s ease-in-out forwards;
-    }
-}
-@keyframes inactiveContactMed {
-    0%{
-        transform: translateY(-50vh);
-        opacity: 100%;
-        height: 70vh;
-
-    }
-    99%{
-        transform: translateY(0vh);
-        opacity: 0%;
-        height: 70vh;
-    }
-    100% {
-        height: 0px;
-        overflow: hidden;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .inactiveContact {
-        display: block;
-        animation: inactiveContactSmall 1s ease-in-out forwards;
-    }
-}
-@keyframes inactiveContactSmall {
-    0%{
-        transform: translateY(-63vh);
-        opacity: 100%;
-        height: 70vh;
-
-    }
-    99%{
-        transform: translateY(0vh);
-        opacity: 0%;
-        height: 70vh;
-    }
-    100% {
-        height: 0px;
-        overflow: hidden;
-    }
-}
-
-
-
-
-.activeItem .info{                                          /* Animation for hovering over videos */
-    animation: activeItem 0.5s ease-out forwards;
-}
-.activeItem .info span{
-    animation: activeItemSpan 0.5s ease-out forwards;
-}
-.activeItem .info span:nth-of-type(2) {
-    animation-delay: 0.2s;
-}
-.activeItem .info span:last-of-type{
-    animation-delay: 0.4s;
-}
-@keyframes activeItem {
-    0%{
-        transform: scale(100%);
-        height: 0px;
-    }
-    100%{
-        height: 100%;
-        opacity: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-}
-@keyframes activeItemSpan {
-    0%{
-        opacity: 0%;
-    }
-    100%{
-        opacity: 100%;
-    }
-}
-
-.inactiveItem .info{
-    animation: inactiveItem 1s ease-out forwards;
-}
-.inactiveItem .info span{
-    animation: inactiveItemSpan 0.5s ease-out forwards;
-}
-@keyframes inactiveItem {
-    0%{
-        height: 100%;
-        opacity: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-    50%{
-        transform: scale(150%);
-        opacity: 0%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0);
-    }
-    100%{
-        transform: scale(100%);
-        height: 0px;
-    }
-}
-@keyframes inactiveItemSpan {
-    0%{
-        opacity: 100%;
-    }
-    100%{
-        opacity: 0%;
-    }
-}
-
-
-
-
-footer.activeFooter {                           /* Animation for footer */
-    position: fixed;
-    z-index: 3;
-    animation: activeFooter 0.3s ease-in forwards;
-}
-@keyframes activeFooter {
-    0%{
-        bottom: -60px;
-        width: 160%;
-        left: -20%;
-        opacity: 0%;
-    }
-    100%{
-        bottom: 0px;
-        width: 100%;
-        left: 0%;
-        opacity: 100%;
-    }
-}
-
-footer.inactiveFooter {
-    position: fixed;
-    animation: inactiveFooter 0.5s ease-out forwards;
-}
-@keyframes inactiveFooter {
-    0%{
-        bottom: 0px;
-        width: 100%;
-        left: 0%;
-        opacity: 100%;
-    }
-    50%{
-        bottom: -60px;
-        width: 100%;
-        left: 0%;
-        opacity: 100%;
-    }
-    100%{
-        bottom: -60px;
-        width: 160%;
-        left: -20%;
-        opacity: 0%;
-    }
-}
-
-
-
-
-
-.videoBox.activeBox {                                    /* Animation for activating a video box */
-    animation: activeBox 1s ease-out forwards;
-}
-@keyframes activeBox {
-    0%{
-        height: 0px;
-        transform: rotateX(90deg);
-        opacity: 0%;
-        width: 50%;
-        left: 25%;
-    }
-    50%{
-        height: 58vw;
-        transform: rotateX(90deg);
-        opacity: 0%;
-    }
-    100%{
-        height: 58vw;
-        transform: rotateX(0deg);
-        opacity: 100%;
-        width: 100%;
-        left: 0%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .videoBox.activeBox {
-    animation: activeBoxS 1s ease-out forwards;
-    }
-}
-@keyframes activeBoxS {
-    0%{
-        height: 0px;
-        transform: rotateX(90deg);
-        opacity: 0%;
-        width: 50%;
-        left: 25%;
-    }
-    50%{
-        height: 64vw;
-        transform: rotateX(90deg);
-        opacity: 0%;
-    }
-    100%{
-        height: 64vw;
-        transform: rotateX(0deg);
-        opacity: 100%;
-        width: 100%;
-        left: 0%;
-    }
-}
-
-
-
-.videoBox.inactiveBox {
-    animation: inactiveBox 1s ease-in-out forwards;
-}
-@keyframes inactiveBox {
-    0%{
-        height: 64vw;
-        transform: rotateX(0deg);
-        opacity: 100%;
-        width: 100%;
-        left: 0%;
-    }
-    50%{
-        height: 58vw;
-    }
-    100%{
-        height: 0px;
-        transform: rotateX(90deg);
-        opacity: 0%;
-        width: 50%;
-        left: 25%;
-    }
-}
-
-.CVunavailable {
-    animation: CVunavailable 1s ease-in-out forwards;
-}
-@keyframes CVunavailable {
-    0% {
-        opacity: 100%;
-        pointer-events: none;
-    }
-    100% {
-        opacity: 50%;
-        pointer-events: none;
-    }
-}
-
-.CVavailable {
-    animation: CVavailable 1s ease-in-out forwards;
-}
-@keyframes CVavailable {
-    0% {
-        opacity: 50%;
-        pointer-events: auto;
-    }
+@keyframes fadeIn {
+    0%{}
     100% {
         opacity: 100%;
-        pointer-events: auto;
     }
 }
-
-
 
 
 
