@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Data-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="placeholder">
+    <meta name="copyright" name="Abdallah Mohsen">
+    <meta name="keywords" content="Video editing, Video editor, Premier editor, Premier pro editor, montage, Abdallah Mohsen, Abdallah">
+    <title>Abdallah Mohsen</title>
+    
+    <!--Links-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="Videos and photos/logo.avif">
+    <link rel="stylesheet" href="Assets/Styles/styles.css">
+    <link rel="stylesheet" href="Assets/Styles/animation.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <picture class="myLogo">
+                <img src="Videos and photos/Logo.jpg" alt="Abdallah Mohsen">
+            </picture>
+            <!-- <div class="headerDetails">
+                <h1>Abdallah Mohsen</h1>
+                <span>Video Editor</span>
+            </div> -->
+        </header>
+
+
+        <!-- Nav bar -->
+        <nav>
+            <ul>
+                <li class="homeTab activeTab">
+                    <span href="">Home</span>
+                </li>
+
+                <li>
+                    <span href="" class="servicesTab">Services</span>
+                </li>
+                
+                <li><span href="" class="contactTab">Contact</span>
+                </li>
+                
+                <li>
+                    <span href="" class="aboutTab">About us</span>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- Page content -->
+        <div class="content">
+            <div id="preserveHeight"></div>
+
+
+            <!-- Home page -->
+            <div class="workContent page activePage" id="workContent">
+
+
+                <!-- Video player -->
+                <div class="player">
+                    <!-- Embedded iframe -->
+                    <div class="videoPlayer">
+                        <iframe src="https://drive.google.com/file/d/1Hkrjunqu0Pi3QY8zyptSUZoSMV3X__yA/preview" allow="autoplay"></iframe>
+                            <!-- content replaced with javascript -->
+                    </div>
+                    <div class="popupCover"></div>
+                    <!-- video title and description -->
+                    <div class="playerContent">
+                        <div class="playerInfo">
+                            <span class="playerItemTitle"></span>
+                            <span class="playerDescription"></span>
+                        </div>
+                        <div class="close">Close</div>
+                    </div>
+
+                </div>
+
+                
+                <!-- Video gallery -->
+                <div class="videoGallery">
+                    <div class="item">
+                        <video muted>
+                            <source src="Videos and photos/Portfolio mini.mp4" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+
+                        <div class="info">
+                            <span class="videoTitle">Portfolio</span>
+                            <span class="videoDescription">My Portfolio.</span>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <video muted>
+                            <source src="Videos and photos/Mclaren 570 GT mini.mp4" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+
+                        <div class="info">
+                            <span class="videoTitle">Mclaren 570 GT</span>
+                            <span class="videoDescription">Footage from Pexels. I worked on arranging clips, add transitions, make colour correction, color grading and adding SFX.</span>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <video muted>
+                            <source src="Videos and photos/Cinematic Boxing Workout mini.mp4" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+
+                        <div class="info">
+                            <span class="videoTitle">Cinematic Boxing Workout</span>
+                            <span class="videoDescription">Footage From Pexels.</span>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <video muted>
+                            <source src="Videos and photos/Cinema Video mini.mp4" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+
+                        <div class="info">
+                            <span class="videoTitle">Cinema Video</span>
+                            <span class="videoDescription">The scene isn't in the video I had The materials and I worked on arranging clips, add transitions, make colour correction and color grading.</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!-- Services page -->
+            <div class="services page inactivePage transparent">
+                <picture>
+                    <img src="Videos and photos/services.jpg" alt="Services img">
+                </picture>
+                <h2>Services:</h2>
+                <ul>
+                    <li> animation </li>
+                    <li> Transitions </li>
+                    <li> Subtitles / Lyrics </li>
+                    <li> slow movements </li>
+                    <li> Special effects </li>
+                    <li> Export Your video  in high quality (Full HD). </li>
+                </ul>
+            </div>
+
+
+            <!-- Contact page -->
+            <div class="contact page inactivePage transparent">
+                <!-- Info -->
+                <div class="contactInfo">
+                    <div class="contactInfoWrapper">
+                        <h2 class="name">Abdallah Mohsen</h2>
+                        <span class="infoName">MAIl.</span>
+                        <span class="mail">abdallahmohsen3333@gmail.com</span>
+                        <span class="links">
+                            <a href="https://twitter.com/abdalla63851784?t=4tuYF45QhnRlj7Ms4u5PiQ&s=09" target="_blank">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com/3bdallahmohsen?igshid=ZDdkNTZiNTM=" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/mwlite/in/abdallah-mohsen-a37b66257" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://vimeo.com/user182410406">
+                                <i class="fa-brands fa-vimeo" target="_blank"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!-- Sending an email -->
+                <div class="sendReq">
+                    <h2>Send an Email</h2>
+                    <form action="https://formsubmit.co/e83a5511861de1b6e03873837ea0389e" method="POST">
+                        <input type="hidden" name="_captcha" value="false"> <!-- disable recaptcha -->
+                        <input type="hidden" name="_next" value="/Thank you.html"> <!-- Thank you page -->
+                        <input type="hidden" name="_subject" value="New Customer request">
+
+                        <input type="text" name="name" id="name" placeholder="Enter your name">
+
+                        <input type="email" name="email" id="email" placeholder="Enter your Email Address">
+
+                        <input type="text" name="message" id="messageBox" placeholder="Type your message here">
+
+                        <button type="submit">Send</button>
+
+                </form>
+                </div>
+            </div>
+
+
+            <!-- About -->
+            <div class="about page inactivePage transparent">
+                <h2>About</h2>
+                
+                <div class="aboutDescription">
+                    I am 17 years old full time video editor based in Cairo. I have one year Of experience in video editing field.
+                </div>
+
+                <div class="softwares">
+                    <span class="softwaresDescription">I use 4 diferrent editing softwares: </span>
+                    <dl>
+                        <dt>Premiere pro</dt> 
+                            <dd>Which is the main editing software.</dd>
+                        <br>
+                        <dt>After Effects</dt>
+                            <dd>To make animation and VFX.</dd>
+                        <br>
+                        <dt>Dvainci Resolve</dt>
+                            <dd>To make color correction and color Grading.</dd>
+                        <br>
+                        <dt>Adobe Audition</dt>
+                            <dd>To remove Noise and Make Sound better.</dd>
+                    </dl>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>Abdallah Mohsen &#169; 2023</div>
+        <div class="creatorSign">
+            Website by El-Magrisy
+        </div>
+    </footer>
+    <script src="Assets/App/app.js"></script>
+</body>
+</html>
