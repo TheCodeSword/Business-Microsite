@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /* Hover over videos */
 
@@ -324,3 +325,331 @@ footer.inactiveFooter {                       /* Deactivating footer */
 }
 
 
+=======
+
+/* Hover over videos */
+
+.activeItem .info {                                 /* Activating The item */
+    animation: activeItem 0.5s ease-out forwards;
+}
+.activeItem .info span{
+    animation: activeItemSpan 0.5s ease-out forwards;
+}
+.activeItem .info span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+@keyframes activeItem {
+    0%{}
+    100%{
+        height: 100%;
+        opacity: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}
+@keyframes activeItemSpan {
+    0%{}
+    100%{
+        opacity: 100%;
+    }
+}
+
+
+.inactiveItem .info{                                    /* Deactivating The item */
+    animation: inactiveItem 1s ease-out forwards;
+}
+.inactiveItem .info span{
+    animation: inactiveItemSpan 0.5s ease-out forwards;
+}
+@keyframes inactiveItem {
+    0%{
+        height: 100%;
+        opacity: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    50%{
+        transform: scale(150%);
+        opacity: 0%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%{
+        transform: scale(100%);
+        height: 0px;
+    }
+}
+@keyframes inactiveItemSpan {
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}
+
+
+
+
+/* Click on video */
+
+.player.activePlayer, .player.inactivePlayer {
+    transition: transform 1s ease-out, opacity 1s ease-out;
+    transform-origin: 50% 100%;
+}
+.player.activePlayer{
+    transform: perspective(300px) rotateX(0deg) scale(1,1);
+    opacity: 100%;
+    z-index: 2;
+}
+.player.inactivePlayer{
+    transform: perspective(300px) rotateX(45deg) scale(0.7,0.7);
+    opacity: 0%;
+    z-index: -1;
+}
+
+
+.activeGallery, .inactiveGallery {
+    transition: all 1s ease-in;
+}
+.inactiveGallery {
+    pointer-events: none;
+    opacity: 30%;
+}
+.activeGallery {
+    pointer-events: unset;
+    opacity: 100%;
+    transform: translateY(0vh);
+}
+                                                   /* sorry for that :( maybe better with js */
+@media screen and (min-aspect-ratio: 10/23) {
+    .inactiveGallery{
+        transform: translateY(20vh);
+    }
+}
+@media screen and (min-aspect-ratio: 10/21) {
+    .inactiveGallery{
+        transform: translateY(25vh);
+    }
+}
+@media screen and (min-aspect-ratio: 10/19) {
+    .inactiveGallery{
+        transform: translateY(35vh);
+    }
+}
+@media screen and (min-aspect-ratio: 10/17) {
+    .inactiveGallery{
+        transform: translateY(35vh);
+    }
+}
+@media screen and (min-aspect-ratio: 10/15) {
+    .inactiveGallery{
+        transform: translateY(35vh);
+    }
+}
+@media screen and (min-aspect-ratio: 10/13) {
+    .inactiveGallery{
+        transform: translateY(35vh);
+    }
+}
+@media screen and (min-aspect-ratio: 10/11) {
+    .inactiveGallery{
+        transform: translateY(40vh);
+    }
+}
+
+@media screen and (min-aspect-ratio: 10/10) {
+    .inactiveGallery{
+        transform: translateY(40vh);
+    }
+}
+
+@media screen and (min-aspect-ratio: 11/10) {
+    .inactiveGallery{
+        transform: translateY(50vh);
+    }
+}
+@media screen and (min-aspect-ratio: 13/10) {
+    .inactiveGallery{
+        transform: translateY(60vh);
+    }
+}
+@media screen and (min-aspect-ratio: 15/10) {
+    .inactiveGallery{
+        transform: translateY(65vh);
+    }
+}
+@media screen and (min-aspect-ratio: 17/10) {
+    .inactiveGallery{
+        transform: translateY(70vh);
+    }
+}
+@media screen and (min-aspect-ratio: 19/10) {
+    .inactiveGallery{
+        transform: translateY(80vh);
+    }
+}
+@media screen and (min-aspect-ratio: 21/10) {
+    .inactiveGallery{
+        transform: translateY(90vh);
+    }
+}
+@media screen and (min-aspect-ratio: 23/10) {
+    .inactiveGallery{
+        transform: translateY(100vh);
+    }
+}
+
+
+
+
+/* Switching TABS :( */
+
+nav ul li.activeTab::after, nav ul li.inactiveTab::after {
+    transition: width 1s ease-out;
+}
+
+nav ul li.activeTab::after {
+    width: 100%;
+}
+
+nav ul li.inactiveTab::after {
+    width: 0%;
+}
+
+.activePage{
+    animation: activePage 1s ease-in-out forwards;
+}
+@keyframes activePage {
+    0%{
+        top: 100%;
+        max-height: 0px;
+        opacity: 0%;
+    }
+    100%{
+        top: 0%;
+        max-height: 2500px;
+        opacity: 100%;
+    }
+}
+
+.inactivePage {
+    animation: inactivePage 1s ease-in-out forwards;
+}
+@keyframes inactivePage {
+    0%{
+        top: 0%;
+        max-height: 2500px;
+        transform: perspective(100px) translateZ(0px);
+        opacity: 100%;
+    }
+    90%{
+        top: 0%;
+        max-height: 2500px;
+        transform: perspective(100px) translateZ(-100px);
+        opacity: 0%;
+    }
+    100%{
+        top: 100%;
+        max-height: 0px;
+        transform: perspective(100px) translateZ(0px);
+        opacity: 0%;
+    }
+}
+
+.content .page.transparent {
+    animation: transparent 2s ease-in-out forwards;
+}
+@keyframes transparent { /* to prevent the initial appearance of all pages */
+    0%{opacity: 0%;}
+    100%{opacity: 100%;}
+}
+
+
+
+/* Footer animation */
+
+footer.activeFooter {                   /* activating footer */
+    position: fixed;
+    z-index: 3;
+    animation: activeFooter 0.3s ease-in forwards;
+}
+@keyframes activeFooter {
+    0%{}
+    100%{
+        transform: translateY(0%);
+        width: 72%;
+        margin-left: 14%;
+        opacity: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    footer.activeFooter {
+        animation: activeFooterXXXXX 0.3s ease-in forwards;
+    }
+}
+@keyframes activeFooterXXXXX {
+    0%{}
+    100%{
+        transform: translateY(0%);
+        width: 92%;
+        margin-left: 4%;
+        opacity: 100%;
+    }
+}
+
+
+
+footer.inactiveFooter {                       /* Deactivating footer */
+    position: fixed;
+    animation: inactiveFooter 0.5s ease-out forwards;
+}
+@keyframes inactiveFooter {
+    0%{
+        transform: translateY(0%);
+        width: 72%;
+        margin-left: 14%;
+        opacity: 100%;
+    }
+    50%{
+        transform: translateY(100%);
+        width: 72%;
+        margin-left: 14%;
+        opacity: 100%;
+    }
+    100%{
+        transform: translateY(100%);
+        width: 140%;
+        margin-left: -20%;
+        opacity: 0%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    footer.inactiveFooter {
+        animation: inactiveFooterXXXXX 0.5s ease-out forwards;
+    }
+}
+@keyframes inactiveFooterXXXXX {
+    0%{
+        transform: translateY(0%);
+        width: 92%;
+        margin-left: 4%;
+        opacity: 100%;
+    }
+    50%{
+        transform: translateY(100%);
+        width: 92%;
+        margin-left: 4%;
+        opacity: 100%;
+    }
+    100%{
+        transform: translateY(100%);
+        width: 140%;
+        margin-left: -20%;
+        opacity: 0%;
+    }
+}
+
+
+>>>>>>> 7548beff533ac351f765d1b59cc2955708ec112a
